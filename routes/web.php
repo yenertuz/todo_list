@@ -43,3 +43,8 @@ Route::post('/todos', function (Request $request) {
 		])
 	);
 });
+
+Route::delete('/todos/{id}', function ($id) {	
+	return response()->json(
+		App\Todo::find($id)->delete()
+	); });
