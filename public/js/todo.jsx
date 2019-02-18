@@ -45,12 +45,14 @@ class Todo {
 	}
 
 	static delete(event, index) {
+		if (index == null)
+			return ;
 		event.preventDefault();
-		const indexToDelete = Todo.all[index].id;
-		Todo.all.splice(index, 1);
-		fetch("/todos/" + encodeURIComponent(indexToDelete), {
+		Todo.all = Todo.all.filter( (element) => element.id != index);
+		Todo.rerender();
+		fetch("/todos/" + encodeURIComponent(index), {
 			method: "DELETE"
-		}).then(Todo.rerender());
+		});
 	}
 
 }

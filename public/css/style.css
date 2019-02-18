@@ -1,0 +1,70 @@
+input[type="text"] {
+	width: 50%;
+	min-width: 200px;
+	text-align: center;
+	margin-bottom: 10px;
+	height: 20px;
+	font-size: 14px;
+}
+
+#add-button {
+	margin-bottom: 10px;
+	height: 20px;
+	font-size: 12px;
+}
+
+button, input[type="text"], .nice-border {
+	border: 1px #525252 solid;
+	border-radius: 5px;
+}
+
+div.li-div button {
+	float: right;
+	height: 23px;
+	/* padding-right: 5px; */
+	/* display: none; */
+}
+
+.centerer {
+	float:left
+}
+
+div.li-div:nth-child(even) {
+	background-color: whitesmoke;
+}
+
+div.li-div p {
+	display: inline-block;
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+
+button {
+	width: 50px;
+}
+
+button.del-button:hover {
+	color: orangered;
+	border: 2px orangered solid;
+}
+
+button:hover, input[type="text"]:hover, .nice-border:hover {
+	border: 2px black solid;
+	background-color: whitesmoke;
+	font-weight: bold;
+}
+
+input[type="text"]:hover {
+	background-color: white !important;
+}
+
+#root {
+	margin: auto;
+	text-align: center;
+}
+
+body {
+	background-color: white;
+	color: #525252;
+	font-family: sans-serif;
+}

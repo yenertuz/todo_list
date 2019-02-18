@@ -13,7 +13,6 @@ class Root extends React.Component {
 		setTimeout(
 			() => {
 				this.setState({});
-				console.log("fetched");
 			}, 500);
 	}
 
@@ -23,15 +22,15 @@ class Root extends React.Component {
 
 		var listItems = Todo.all.map(
 			(element, index) => {
-				return (<div key={index} >
-				<li style={{display: 'inline'}}>{JSON.stringify(element)}</li>
-				<button style={{display: 'inline'}} onClick={ (e) => { Todo.delete(e, index) } } >X</button>
+				return (<div key={index} className="li-div">
+				<p>{element.content}</p>
+				<button className="del-button"  onClick={ (e) => { Todo.delete(e, element.id) } } >X</button>
 				</div>);
 			}
 		);
 
 		return (
-			<ul>{listItems}</ul>
+			<div id='list-container'>{listItems}</div>
 		)
 	}
 
@@ -49,7 +48,7 @@ class Root extends React.Component {
 		return (
 			<div>
 			<input id="new-todo" type="text" placeholder="New Todo Item"></input><br />
-			<button onClick={this.add}>Add</button><br />
+			<button id="add-button" onClick={this.add}>ADD</button><br />
 			{this.list()}
 			</div>
 		); }

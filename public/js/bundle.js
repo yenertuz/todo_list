@@ -136,8 +136,6 @@ function (_React$Component) {
     _todo__WEBPACK_IMPORTED_MODULE_2__["default"].rerender = _todo__WEBPACK_IMPORTED_MODULE_2__["default"].rerender.bind(_assertThisInitialized(_this));
     setTimeout(function () {
       _this.setState({});
-
-      console.log("fetched");
     }, 500);
     return _this;
   }
@@ -148,21 +146,18 @@ function (_React$Component) {
       if (_todo__WEBPACK_IMPORTED_MODULE_2__["default"].all == undefined) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "fetching todo list...");
       var listItems = _todo__WEBPACK_IMPORTED_MODULE_2__["default"].all.map(function (element, index) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          key: index
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          style: {
-            display: 'inline'
-          }
-        }, JSON.stringify(element)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          style: {
-            display: 'inline'
-          },
+          key: index,
+          className: "li-div"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, element.content), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "del-button",
           onClick: function onClick(e) {
-            _todo__WEBPACK_IMPORTED_MODULE_2__["default"].delete(e, index);
+            _todo__WEBPACK_IMPORTED_MODULE_2__["default"].delete(e, element.id);
           }
         }, "X"));
       });
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, listItems);
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "list-container"
+      }, listItems);
     }
   }, {
     key: "add",
@@ -183,8 +178,9 @@ function (_React$Component) {
         type: "text",
         placeholder: "New Todo Item"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "add-button",
         onClick: this.add
-      }, "Add"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.list());
+      }, "ADD"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.list());
     }
   }]);
 
@@ -24774,12 +24770,15 @@ function () {
   }, {
     key: "delete",
     value: function _delete(event, index) {
+      if (index == null) return;
       event.preventDefault();
-      var indexToDelete = Todo.all[index].id;
-      Todo.all.splice(index, 1);
-      fetch("/todos/" + encodeURIComponent(indexToDelete), {
+      Todo.all = Todo.all.filter(function (element) {
+        return element.id != index;
+      });
+      Todo.rerender();
+      fetch("/todos/" + encodeURIComponent(index), {
         method: "DELETE"
-      }).then(Todo.rerender());
+      });
     }
   }]);
 
