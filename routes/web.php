@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/test', function () {
+	header("Access-Control-Allow-Origin: *");
 	return 'Hello there';
 });
 
