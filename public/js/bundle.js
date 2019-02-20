@@ -24733,7 +24733,7 @@ function () {
   _createClass(Todo, null, [{
     key: "index",
     value: function index() {
-      fetch("/todos").then(function (response) {
+      fetch("http://35.185.197.2/todos").then(function (response) {
         response.json().then(function (data) {
           Todo.all = [];
           data.forEach(function (element) {
@@ -24749,7 +24749,7 @@ function () {
       var body = "content=" + encodeURIComponent(skeleton.content);
       Todo.all.push(newTodo);
       Todo.rerender();
-      fetch("/todos", {
+      fetch("http://35.185.197.2/todos", {
         method: "POST",
         headers: {
           "Content-type": "application/x-www-form-urlencoded"
@@ -24776,7 +24776,7 @@ function () {
         return element.id != index;
       });
       Todo.rerender();
-      fetch("/todos/" + encodeURIComponent(index), {
+      fetch("http://35.185.197.2/todos/" + encodeURIComponent(index), {
         method: "DELETE"
       });
     }

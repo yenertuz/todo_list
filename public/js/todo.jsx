@@ -9,7 +9,7 @@ class Todo {
 
 	static index() {
 
-		fetch("/todos").then(
+		fetch("http://35.185.197.2/todos").then(
 			(response) => {
 				response.json().then( (data) => {
 					Todo.all = [];
@@ -29,7 +29,7 @@ class Todo {
 
 		Todo.rerender();
 
-		fetch("/todos", {
+		fetch("http://35.185.197.2/todos", {
 			method: "POST",
 			headers: {"Content-type": "application/x-www-form-urlencoded"},
 			body: body
@@ -50,7 +50,7 @@ class Todo {
 		event.preventDefault();
 		Todo.all = Todo.all.filter( (element) => element.id != index);
 		Todo.rerender();
-		fetch("/todos/" + encodeURIComponent(index), {
+		fetch("http://35.185.197.2/todos/" + encodeURIComponent(index), {
 			method: "DELETE"
 		});
 	}
