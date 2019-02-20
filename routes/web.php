@@ -54,4 +54,4 @@ Route::delete('/todos/{id}', function ($id) {
 	header("Access-Control-Allow-Methods: GET, PUT, POST, DELETE");
 	return response()->json(
 		App\Todo::find($id)->delete()
-	); });
+	)->header("Access-Control-Allow-Origin: *"); });
