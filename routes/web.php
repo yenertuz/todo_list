@@ -57,4 +57,4 @@ Route::delete('/todos/{id}', function ($id) {
 	return response("OK");
 	return response()->json(
 		App\Todo::find($id)->delete()
-	)->header("Access-Control-Allow-Origin: *"); });
+	)->header("Access-Control-Allow-Origin". "*"); });
