@@ -49,9 +49,9 @@ class Todo {
 		element.content = event.target.innerHTML;
 		fetch("http://35.185.197.2/todos", {
 			method: "PUT",
-			// headers: {"Content-type": "text/html"},
+			headers: {"Content-type": "text/plain"},
 			body: event.target.innerHTML
-		})  ;
+		});
 	}
 
 	static rerender() {
