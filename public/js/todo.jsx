@@ -58,13 +58,14 @@ class Todo {
 		this.setState({});
 	}
 
-	static delete(event, index) {
-		if (index == null)
+	static delete(event, element) {
+		console.log("deleting " + element.id);
+		if (element == null || element.id == null)
 			return ;
 		event.preventDefault();
-		Todo.all = Todo.all.filter( (element) => element.id != index);
+		Todo.all = Todo.all.filter( (element2) => element2.id != element.id);
 		Todo.rerender();
-		fetch("http://35.185.197.2/todos/" + encodeURIComponent(index), {
+		fetch("http://35.185.197.2/todos/" + encodeURIComponent(element.id), {
 			method: "DELETE"
 		});
 	}
