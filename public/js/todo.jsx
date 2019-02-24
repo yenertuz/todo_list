@@ -41,14 +41,16 @@ class Todo {
 	}
 
 	static update(event, element) {
-		if (index == null)
+		if (element.id == null) {
+			console.log(JSON.stringify(element));
 			return ;
+		}
 		event.preventDefault();
 		element.content = event.target.innerHTML;
 		fetch("http://35.185.197.2/todos", {
 			method: "PUT",
-			headers: {"Content-type": "application/json"},
-			body: JSON.stringify(element)
+			// headers: {"Content-type": "text/html"},
+			body: event.target.innerHTML
 		})  ;
 	}
 

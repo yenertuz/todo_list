@@ -151,7 +151,7 @@ function (_React$Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           contentEditable: "true",
           onInput: function onInput(e) {
-            return _todo__WEBPACK_IMPORTED_MODULE_2__["default"].update(e, element.id);
+            return _todo__WEBPACK_IMPORTED_MODULE_2__["default"].update(e, element);
           }
         }, element.content), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "del-button",
@@ -24770,15 +24770,17 @@ function () {
   }, {
     key: "update",
     value: function update(event, element) {
-      if (index == null) return;
+      if (element.id == null) {
+        console.log(JSON.stringify(element));
+        return;
+      }
+
       event.preventDefault();
       element.content = event.target.innerHTML;
       fetch("http://35.185.197.2/todos", {
         method: "PUT",
-        headers: {
-          "Content-type": "application/json"
-        },
-        body: JSON.stringify(element)
+        // headers: {"Content-type": "text/html"},
+        body: event.target.innerHTML
       });
     }
   }, {
