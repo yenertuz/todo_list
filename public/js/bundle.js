@@ -24771,13 +24771,11 @@ function () {
     key: "update",
     value: function update(event, element) {
       if (element == null || element.id == null) {
-        console.log(JSON.stringify(element));
         return;
       }
 
       event.preventDefault();
       element.content = event.target.textContent;
-      console.log(event.target.textContent);
       fetch("http://35.185.197.2/todos/" + element.id, {
         method: "PUT",
         headers: {
