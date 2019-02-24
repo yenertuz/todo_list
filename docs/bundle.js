@@ -24776,13 +24776,14 @@ function () {
       }
 
       event.preventDefault();
-      element.content = event.target.innerHTML;
+      element.content = event.target.textContent;
+      console.log(event.target.textContent);
       fetch("http://35.185.197.2/todos/" + element.id, {
         method: "PUT",
         headers: {
           "Content-type": "text/plain"
         },
-        body: event.target.innerHTML
+        body: event.target.textContent
       });
     }
   }, {
