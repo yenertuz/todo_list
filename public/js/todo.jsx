@@ -41,13 +41,13 @@ class Todo {
 	}
 
 	static update(event, element) {
-		if (element.id == null) {
+		if (element == null || element.id == null) {
 			console.log(JSON.stringify(element));
 			return ;
 		}
 		event.preventDefault();
 		element.content = event.target.innerHTML;
-		fetch("http://35.185.197.2/todos", {
+		fetch("http://35.185.197.2/todos/" + element.id, {
 			method: "PUT",
 			headers: {"Content-type": "text/plain"},
 			body: event.target.innerHTML
