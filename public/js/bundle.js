@@ -148,10 +148,15 @@ function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: index,
           className: "li-div"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, element.content), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          contentEditable: "true",
+          onInput: function onInput(e) {
+            return _todo__WEBPACK_IMPORTED_MODULE_2__["default"].update(e, element.id);
+          }
+        }, element.content), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "del-button",
           onClick: function onClick(e) {
-            _todo__WEBPACK_IMPORTED_MODULE_2__["default"].delete(e, element.id);
+            _todo__WEBPACK_IMPORTED_MODULE_2__["default"].delete(e, element);
           }
         }, "X"));
       });
@@ -24760,6 +24765,20 @@ function () {
           newTodo.id = data.id;
           Todo.rerender();
         });
+      });
+    }
+  }, {
+    key: "update",
+    value: function update(event, element) {
+      if (index == null) return;
+      event.preventDefault();
+      element.content = event.target.innerHTML;
+      fetch("http://35.185.197.2/todos", {
+        method: "PUT",
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify(element)
       });
     }
   }, {

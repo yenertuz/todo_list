@@ -40,6 +40,18 @@ class Todo {
 
 	}
 
+	static update(event, element) {
+		if (index == null)
+			return ;
+		event.preventDefault();
+		element.content = event.target.innerHTML;
+		fetch("http://35.185.197.2/todos", {
+			method: "PUT",
+			headers: {"Content-type": "application/json"},
+			body: JSON.stringify(element)
+		})  ;
+	}
+
 	static rerender() {
 		this.setState({});
 	}

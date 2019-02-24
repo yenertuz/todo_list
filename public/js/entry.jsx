@@ -23,8 +23,8 @@ class Root extends React.Component {
 		var listItems = Todo.all.map(
 			(element, index) => {
 				return (<div key={index} className="li-div">
-				<p>{element.content}</p>
-				<button className="del-button"  onClick={ (e) => { Todo.delete(e, element.id) } } >X</button>
+				<p contentEditable="true" onInput={(e) => Todo.update(e, element.id) }>{element.content}</p>
+				<button className="del-button"  onClick={ (e) => { Todo.delete(e, element) } } >X</button>
 				</div>);
 			}
 		);

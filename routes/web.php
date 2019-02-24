@@ -53,3 +53,13 @@ Route::delete('/todos/{id}', function ($id) {
 	return response()->json(
 		App\Todo::find($id)->delete()
 	); });
+
+Route::put("/todos/{id}", function ($id) {
+	if (App\Todo::find($id) == null)
+		return response(false);
+	return response()->json( 
+		App\Todo::find($id)->update(
+			["content" => file_get_contents("php://input") ]
+		)
+	 );
+});
