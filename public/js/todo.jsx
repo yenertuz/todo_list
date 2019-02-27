@@ -58,7 +58,6 @@ class Todo {
 	}
 
 	static delete(event, element) {
-		console.log("deleting " + element.id);
 		if (element == null || element.id == null)
 			return ;
 		event.preventDefault();
